@@ -6,7 +6,7 @@ import { TfiHeart } from "react-icons/tfi";
 const CardComponent = () => {
   return (
     <div className="max-w-57.5 w-full">
-      <div className="relative flex items-center justify-center bg-taupe-200 min-h-80">
+      <div className="relative flex items-center justify-center bg-surface min-h-80">
         <Image
           width={225}
           height={255}
@@ -26,15 +26,13 @@ const CardComponent = () => {
         </div>
       </div>
       <div className="mt-2">
-        <span className="text-base font-bold text-gray-800 pt-1.5">
+        <span className="text-base font-header color-text pt-1.5">
           Annibale Colombo bed
         </span>
-        <p className="text-xs whitespace-pre-line text-gray-800 font-bold">
-          $1699.99
-        </p>
+        <p className="whitespace-pre-line font-bold">$1699.99</p>
         <div className="flex justify-between">
-          <p className="text-xs line-through text-gray-800/40">$1899.99</p>
-          <p className="flex text-xs text-gray-800">Save $99.99</p>
+          <p className="line-through font-light opacity-60">$1899.99</p>
+          <p className="font-light opacity-60">Save $99.99</p>
         </div>
       </div>
     </div>

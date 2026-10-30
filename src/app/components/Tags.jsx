@@ -1,5 +1,5 @@
 const Tags = () => {
-  return <button className="px-6 bg-green-200">Sale</button>;
+  return <button className="px-6 bg-accentLight">Sale</button>;
 };
 
 export default Tags;
