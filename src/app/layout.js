@@ -1,13 +1,19 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Abril_Fatface, Gelasio, Pontano_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const abrilFat = Abril_Fatface({
+  variable: "--font-abril-fat",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const gelasio = Gelasio({
+  variable: "--font-gelasio",
+  subsets: ["latin"],
+});
+
+const pontanoSans = Pontano_Sans({
+  variable: "--font-pontano-sans",
   subsets: ["latin"],
 });
 
@@ -20,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${pontanoSans.variable} ${abrilFat.variable} ${gelasio.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
