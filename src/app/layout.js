@@ -1,6 +1,7 @@
 import { Abril_Fatface, Gelasio, Pontano_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const abrilFat = Abril_Fatface({
   variable: "--font-abril-fat",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-1vh min-h-full">
         <Header />
         <main className="mx-4.5">{children}</main>
+        <Footer />
       </body>
     </html>
   );
