@@ -1,6 +1,8 @@
 const Button = () => {
   return (
-    <button className="bg-taupe-600 text-white w-full h-8">ADD TO CART</button>
+    <button className="bg-accentDark text-white font-bold w-full h-8">
+      ADD TO CART
+    </button>
   );
 };
 
