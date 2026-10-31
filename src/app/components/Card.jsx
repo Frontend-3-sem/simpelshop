@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Tags from "./Tags";
 import Button from "./Button";
-import { TfiHeart } from "react-icons/tfi";
+import Favourite from "./FavouriteBtn";
 
 const CardComponent = () => {
   return (
-    <div className="max-w-57.5 w-full">
-      <div className="relative flex items-center justify-center bg-surface min-h-80">
+    <div className="">
+      <div className="relative flex items-center justify-center bg-surface min-h-80 cursor-pointer">
         <Image
           width={225}
           height={255}
@@ -19,10 +19,10 @@ const CardComponent = () => {
           <Tags />
         </div>
         <div className="absolute top-4 right-4">
-          <TfiHeart className="h-5 w-auto" />
+          <Favourite />
         </div>
-        <div className="absolute inset-x-6 bottom-6 flex justify-center">
-          <Button />
+        <div className="absolute inset-x-5 bottom-5 flex justify-center">
+          <Button text="ADD TO CART" color="primary" />
         </div>
       </div>
       <div className="mt-2">
