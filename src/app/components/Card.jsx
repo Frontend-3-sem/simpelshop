@@ -7,7 +7,7 @@ import Link from "next/link";
 const CardComponent = ({ product }) => {
   return (
     <div>
-      <Link href={`/details/${product.id}`}>
+      <Link href={`/detailview/${product.id}`}>
         <div className="relative flex items-center justify-center bg-surface min-h-80 cursor-pointer">
           <Image
             width={220}
