@@ -25,25 +25,26 @@
 }
 
 @layer components {
+  /* Fonts */
   h1 {
     font-family: var(--font-header);
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 400;
   }
   h2 {
     font-family: var(--font-header);
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 400;
   }
 
   h3 {
     font-family: var(--font-body);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
   }
   h4 {
     font-family: var(--font-body);
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 400;
   }
   p {
@@ -55,6 +56,15 @@
     font-family: var(--font-body);
     font-size: 0.75rem;
     font-weight: 300;
+  }
+
+  /* Utils */
+  .stackcontainer {
+    display: grid;
+    grid-template-areas: "stack";
+    .stackitem {
+      grid-area: stack;
+    }
   }
 }
 

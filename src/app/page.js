@@ -1,15 +1,17 @@
-import DetailView from "./(routes)/detailview/[id]/page";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import News from "./components/News";
+import Popular from "./components/Popular";
+import "./globals.css";
+const Frontpage = () => {
+  return (
+    <>
+      <Hero />
+      <About />
+      <News />
+      <Popular />
+    </>
+  );
+};
 
-const pageEtEllerAndet = () => {
-    return ( 
-        <div>
-
-            <p>Hallo
-
-            </p>
-  
-        </div>
-     );
-}
- 
-export default pageEtEllerAndet;
+export default Frontpage;
