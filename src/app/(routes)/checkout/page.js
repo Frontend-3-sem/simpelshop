@@ -1,4 +1,5 @@
 import { TfiShield } from "react-icons/tfi";
+import CartList from "@/app/components/CartList";
 import Button from "@/app/components/Button";
 import CartItem from "@/app/components/CartItem";
 export default async function Checkout() {
@@ -12,7 +13,7 @@ export default async function Checkout() {
             <h4 className="col-span-2">Quantity</h4>
             <h4 className="col-span-2">Total</h4>
           </div>
-          <FetchProduct />
+          <CartList />
         </div>
         <div className="bg-surface p-4">
           <h4>Summary</h4>
@@ -45,7 +46,7 @@ export default async function Checkout() {
   );
 }
 
-const FetchProduct = async () => {
+const FetchCart = async () => {
   const url = `https://dummyjson.com/products/category/furniture?limit=1`;
 
   const response = await fetch(url);
