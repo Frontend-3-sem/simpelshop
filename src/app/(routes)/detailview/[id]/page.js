@@ -16,7 +16,7 @@ export default async function DetailView({ params }) {
     <main>
       <section className="grid grid-cols-7 gap-4 p-8">
         <div className="col-span-6 p-9">
-          <h1 className="text-6xl">{furniture.title}</h1>
+      <h1 className="text-3xl md:text-5xl lg:text-6xl">{furniture.title}</h1>
         </div>
 
         <div className="col-span-1 flex justify-end p-4">
@@ -28,7 +28,7 @@ export default async function DetailView({ params }) {
             <div className="text-right">
               <p className="text-accentLight">Vejledende udsalgspris</p>
               <p className="text-3xl">{furniture.price} $</p>
-              <p className="text-accentLight">- {furniture.discountPercentage}%</p>
+              <p className="text-accentLight"> - {furniture.discountPercentage}%</p>
             </div>
           </article>
 
@@ -43,14 +43,14 @@ export default async function DetailView({ params }) {
 
         <section className="flex justify-center">
           <div className="relative">
-            <Image src={"https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/2.webp"} width={200} height={200} className=" w-full aspect-square object-cover object-center" alt={furniture.tags} />
+            <Image src={furniture.images[1]}  width={400} height={400} className=" w-full aspect-square object-cover object-center" alt={furniture.tags} />
           </div>
           <div className="relative">
-            <Image src={"https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/3.webp"} width={200} height={200} className=" w-full aspect-square object-cover object-center" alt={furniture.tags} />
+            <Image src={furniture.images[2]}  width={400} height={400} className=" w-full aspect-square object-cover object-center" alt={furniture.tags} />
           </div>
         </section>
 
-        <article className="grid gap-8 p-60">
+        <article className="grid gap-8 p-90">
           <details open>
             <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
               <h3>Description</h3>
@@ -69,7 +69,7 @@ export default async function DetailView({ params }) {
             <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
               <h3>Specifications</h3>
               <span className="text-2xl group-open:hidden">+</span>
-              <span className="text-2xl hidden group-open:inline">−</span>
+              <span className="text-2xl hidden group-open:inline"> – </span>
             </summary>
             <div className="grid grid-cols-2">
               <p>Brand:</p>
@@ -104,11 +104,6 @@ export default async function DetailView({ params }) {
 
               <p>Shipping information:</p>
               <p className="text-right">{furniture.weight} pound</p>
-
-              <p>Height:</p>
-              <p className="text-right">
-                <p>{furniture.shippingInformation}</p> inch
-              </p>
             </div>
           </details>
         </article>
