@@ -1,0 +1,26 @@
+.rating {  
+    display: flex;
+  align-items: center;
+  gap: 0.75rem;
+ }
+
+.stars {
+  position: relative;
+ display: inline-block;
+  font-size: 1.5rem;
+ line-height: 1;
+  letter-spacing: 0.1rem;
+white-space: nowrap;
+}
+
+.emptyStars {
+     color: #ddd8ce; }
+
+.filledStars {
+position: absolute;
+top: 0;
+left: 0;
+overflow: hidden;
+white-space: nowrap;
+color: #af8c55;
+}
