@@ -1,7 +1,10 @@
+import { TfiShield } from "react-icons/tfi";
+import Button from "@/app/components/Button";
+import CartItem from "@/app/components/CartItem";
 export default async function Checkout() {
   return (
     <>
-      <h1>Checkout</h1>
+      <h1>Shopping Cart</h1>
       <section className="grid grid-cols-4 gap-4">
         <div className="col-span-3 bg-surface p-4">
           <div className="grid grid-cols-7">
@@ -9,6 +12,7 @@ export default async function Checkout() {
             <h4 className="col-span-2">Quantity</h4>
             <h4 className="col-span-2">Total</h4>
           </div>
+          <FetchProduct />
         </div>
         <div className="bg-surface p-4">
           <h4>Summary</h4>
@@ -30,24 +34,27 @@ export default async function Checkout() {
               <dd className="font-bold">$100</dd>
             </div>
           </dl>
+          <div className="flex gap-1">
+            <TfiShield />
+            <p className="subtle">Warranty information & privacy policy</p>
+          </div>
+          <Button text="Proceed to checkout" />
         </div>
       </section>
     </>
   );
 }
 
-// const FetchProduct = async ({ category }) => {
-//   const url = category
-//     ? `https://dummyjson.com/products/category/${category}`
-//     : `https://dummyjson.com/products`;
+const FetchProduct = async () => {
+  const url = `https://dummyjson.com/products/category/furniture?limit=1`;
 
-//   const response = await fetch(url);
-//   const { products } = await response.json();
-//   return (
-//     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-//       {products.map((product) => (
-//         <CardComponent key={product.id} product={product} />
-//       ))}
-//     </div>
-//   );
-// };
+  const response = await fetch(url);
+  const { products } = await response.json();
+  return (
+    <div>
+      {products.map((product) => (
+        <CartItem key={product.id} product={product} />
+      ))}
+    </div>
+  );
+};
