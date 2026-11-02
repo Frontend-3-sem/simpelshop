@@ -1,18 +1,26 @@
-import CardComponent from "./Card";
-const Popular = () => {
+import CardComponent from "../components/Card";
+
+export default async function Popular({ searchParams }) {
   return (
     <>
       <section>
         <h2>Popular products</h2>
-        <div className="grid grid-cols-4">
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-        </div>
+        <FetchPopular />
       </section>
     </>
   );
-};
+}
 
-export default Popular;
+const FetchPopular = async () => {
+  const url = `https://dummyjson.com/products/category/furniture?limit=4`;
+
+  const response = await fetch(url);
+  const { products } = await response.json();
+  return (
+    <div className="grid grid-cols-4 gap-4">
+      {products.map((product) => (
+        <CardComponent key={product.id} product={product} />
+      ))}
+    </div>
+  );
+};
