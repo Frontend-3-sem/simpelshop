@@ -1,14 +1,14 @@
-import Link from "next/link";
+// import Link from "next/link";
 
-const ProductInfo = ({ id, description, category, rating }) => {
-  return <article>
+// const ProductInfo = ({ id, description, category, rating }) => {
+//   return <article>
 
 
 
 
 
     
-  </article>;
-};
+//   </article>;
+// };
 
-export default ProductInfo;
+// export default ProductInfo;
