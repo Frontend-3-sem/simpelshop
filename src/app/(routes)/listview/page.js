@@ -1,7 +1,7 @@
-import CardComponent from "../components/Card";
-import Filterbutton from "../components/FilterButton";
-import Search from "../components/Search";
-import Button from "../components/Button";
+import CardComponent from "../../components/Card";
+import Filterbutton from "../../components/FilterButton";
+import Search from "../../components/Search";
+import Button from "../../components/Button";
 import { Suspense } from "react";
 
 export default async function Products({ searchParams }) {
