@@ -4,7 +4,7 @@ const CategoryBtn = ({ text, category, className }) => {
     <>
       <Link
         className={`py-2 px-10 font-bold cursor-pointer bg-accentDark hover:bg-accentMedium text-background ${className}`}
-        href={`/Listview?category=${category}`}
+        href={`/listview?category=${category}`}
       >
         {text}
       </Link>
