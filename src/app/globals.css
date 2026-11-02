@@ -25,6 +25,7 @@
 }
 
 @layer components {
+  /* Fonts */
   h1 {
     font-family: var(--font-header);
     font-size: 3rem;
@@ -55,6 +56,15 @@
     font-family: var(--font-body);
     font-size: 0.75rem;
     font-weight: 300;
+  }
+
+  /* Utils */
+  .stackcontainer {
+    display: grid;
+    grid-template-areas: "stack";
+    .stackitem {
+      grid-area: stack;
+    }
   }
 }
 
