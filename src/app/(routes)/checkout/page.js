@@ -20,7 +20,9 @@ export default async function Checkout() {
           <CartSummary />
           <div className="flex gap-1 mb-12">
             <TfiShield />
-            <p className="subtle">Warranty information & privacy policy</p>
+            <p className="subtle underline cursor-pointer hover:scale-102">
+              Warranty information & privacy policy
+            </p>
           </div>
           <Button text="Proceed to checkout" />
         </div>

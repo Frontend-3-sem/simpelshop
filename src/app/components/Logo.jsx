@@ -1,7 +1,9 @@
 const Logo = () => {
   return (
     <>
-      <p className="font-logo text-2xl">SimpleShop</p>
+      <p className="font-logo text-2xl hover:scale-102 hover:underline decoration-1">
+        SimpleShop
+      </p>
     </>
   );
 };

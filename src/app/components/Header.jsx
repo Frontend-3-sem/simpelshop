@@ -1,6 +1,6 @@
 import Logo from "./Logo";
 import Link from "next/link";
-import { TfiHeart } from "react-icons/tfi";
+import { IoMdHeart } from "react-icons/io";
 import { TfiShoppingCart } from "react-icons/tfi";
 const Header = () => {
   return (
@@ -11,14 +11,20 @@ const Header = () => {
         </Link>
         <div className="flex">
           <nav className="flex gap-8 items-center">
-            <Link href={`/listview`}>Shop</Link>
-            <a href="/">About</a>
-            <a href="/">Contact</a>
+            <Link className="hover:underline decoration-1" href={`/listview`}>
+              Shop
+            </Link>
+            <Link className="hover:underline decoration-1" href="/">
+              About
+            </Link>
+            <Link className="hover:underline decoration-1" href="/">
+              Contact
+            </Link>
           </nav>
           <div className="flex gap-8 items-center pl-8">
-            <TfiHeart className="h-5 w-auto cursor-pointer fill-text" />
+            <IoMdHeart className="h-5 w-auto cursor-pointer fill-text hover:scale-108" />
             <Link href={`/checkout`}>
-              <TfiShoppingCart className="h-5 w-auto cursor-pointer fill-text" />
+              <TfiShoppingCart className="h-5 w-auto cursor-pointer fill-text hover:scale-108" />
             </Link>
           </div>
         </div>
