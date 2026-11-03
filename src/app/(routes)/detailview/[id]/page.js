@@ -24,7 +24,6 @@ const DetailView = async ({ params }) => {
           <TfiHeart className="text-3xl" />
         </div>
 
-
         <div className="relative col-span-7 h-150">
           <article className="absolute bottom-0 h-[45%] w-full bg-accentMedium p-6">
             <div className="text-right">
@@ -32,13 +31,13 @@ const DetailView = async ({ params }) => {
               <p className="text-3xl">{product.price} $</p>
               <p className="text-accentLight"> - {product.discountPercentage}%</p>
             </div>
-              <div className="absolute inset-x-5 bottom-5 flex justify-center">
-            <Button text="ADD TO CART" color="primary" />
-          </div>
+            <div className="absolute inset-x-5 bottom-5 flex justify-center">
+              <Button text="ADD TO CART" color="primary" />
+            </div>
           </article>
 
           <div className="absolute left-[10%] top-0 z-10 h-full w-[55%]">
-            <Image src={product.images[0]} fill className="object-contain  width={800} height={800}" alt={product.title} />
+            <Image src={product.images[0]} fill sizes="(max-width: 768px) 100vw, 55vw" className=" object-contain" loading="eager" alt={product.title} />
           </div>
         </div>
       </section>
