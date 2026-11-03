@@ -1,15 +1,15 @@
 const About = () => {
   return (
     <>
-      <section className="grid grid-cols-2 gap-4 py-4">
+      <section className="grid grid-cols-2 gap-4 py-4 my-16">
         <h2>Our story</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
+        <p className="pl-4">
+          Podcast sourced handcrafted retro surfboard studio ambient mason
+          vintage wabi-sabi oat-milk synth bespoke loft. Minimalist moleskine
+          terroir hygge hygge weaving single-origin. Ceramics for locally canvas
+          indie curated canvas journal sustainable organic co-op jar mural
+          propagation. Ethical sourdough skateboard mural linen kombucha vintage
+          podcast minimalist cassette latte exhibition.
         </p>
       </section>
     </>

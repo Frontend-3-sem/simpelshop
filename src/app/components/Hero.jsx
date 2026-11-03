@@ -1,10 +1,11 @@
 import Image from "next/image";
 import CategoryBtn from "./CategoryBtn";
+import Button from "./Button";
 const Hero = () => {
   return (
     <>
       <section>
-        <div className="grid grid-cols-4 gap-4 py-4 md:gap-8 md:py-8">
+        <div className="grid grid-cols-4 gap-4 py-4 md:gap-8 md:py-12">
           <Image
             width={500}
             height={500}
@@ -14,8 +15,12 @@ const Hero = () => {
             className="col-span-2 w-full"
           ></Image>
           <div className="col-span-2">
-            <h1>Bold headline goes here</h1>
-            <button>klik her</button>
+            <h1 className="text-6xl flex flex-col mb-8">
+              <span className="py-1">Modern products</span>
+              <span className="py-1">For the</span>
+              <span className="py-1">Modern person</span>
+            </h1>
+            <Button text="Shop all products" />
           </div>
         </div>
         <div className="grid grid-cols-4 gap-4 md:gap-8">
