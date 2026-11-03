@@ -6,18 +6,14 @@ import ReviewCard from "@/app/components/Rating/ReviewCard";
 
 const DetailView = async ({ params }) => {
   const { id } = await params;
-  const response = await fetch(
-    `https://dummyjson.com/products/${id}`
-  );
+  const response = await fetch(`https://dummyjson.com/products/${id}`);
   if (!response.ok) {
     notFound("Produktet kunne ikke hentes");
   }
 
-  const product = await response.json(); 
+  const product = await response.json();
   return (
-
-  
-  <main>
+    <main>
       <section className="grid grid-cols-1  md:grid-cols-5 lg:grid-cols-7 gap-4 p-8  ">
         <div className="col-span-6 p-9">
           <h1 className="text-3xl md:text-5xl lg:text-6xl">{product.title}</h1>
@@ -37,7 +33,7 @@ const DetailView = async ({ params }) => {
           </article>
 
           <div className="absolute left-[10%] top-0 z-10 h-full w-[55%]">
-            <Image src={product.images[0]} fill className="object-contain" alt={product.title} />
+            <Image src={product.images[0]} fill className="object-contain  width={800} height={800}" alt={product.title} />
           </div>
         </div>
       </section>
@@ -55,8 +51,12 @@ const DetailView = async ({ params }) => {
         <details open>
           <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
             <h3>Description</h3>
-            <span className="text-2xl group-open:hidden"><TfiPlus /> </span>
-            <span className="text-2xl hidden group-open:inline"><TfiMinus /></span>
+            <span className="text-2xl group-open:hidden">
+              <TfiPlus />{" "}
+            </span>
+            <span className="text-2xl hidden group-open:inline">
+              <TfiMinus />
+            </span>
           </summary>
 
           <div className="grid grid-cols-2">
@@ -67,8 +67,13 @@ const DetailView = async ({ params }) => {
         <details open>
           <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
             <h3>Specifications</h3>
-            <span className="text-2xl group-open:hidden"><TfiPlus /> </span>
-            <span className="text-2xl hidden group-open:inline"> <TfiMinus /> </span>
+            <span className="text-2xl group-open:hidden">
+              <TfiPlus />{" "}
+            </span>
+            <span className="text-2xl hidden group-open:inline">
+              {" "}
+              <TfiMinus />{" "}
+            </span>
           </summary>
           <div className="grid grid-cols-2">
             <p>Brand:</p>
@@ -91,8 +96,12 @@ const DetailView = async ({ params }) => {
         <details open>
           <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
             <h3>Info</h3>
-            <span className="text-2xl group-open:hidden"><TfiPlus /> </span>
-            <span className="text-2xl hidden group-open:inline"><TfiMinus /></span>
+            <span className="text-2xl group-open:hidden">
+              <TfiPlus />{" "}
+            </span>
+            <span className="text-2xl hidden group-open:inline">
+              <TfiMinus />
+            </span>
           </summary>
           <div className="grid grid-cols-2">
             <p>Return policy:</p>
@@ -107,38 +116,27 @@ const DetailView = async ({ params }) => {
         </details>
       </article>
 
+      <section className="bg-background px-6 py-20 md:px-16">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-accentLight pb-6">
+            <div>
+              <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accentMedium">Customer experiences</p>
 
+              <h2 className="font-header text-4xl text-text md:text-5xl">What our customers say</h2>
+            </div>
 
-<section className="bg-background px-6 py-20 md:px-16">
-  <div className="mx-auto max-w-7xl">
-    <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-accentLight pb-6">
-      <div>
-        <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accentMedium">
-          Customer experiences
-        </p>
+            <span className="text-sm text-accentMedium">{product.reviews?.length ?? 0} Reviews</span>
+          </div>
 
-        <h2 className="font-header text-4xl text-text md:text-5xl">
-          What our customers say
-        </h2>
-      </div>
-
-      <span className="text-sm text-accentMedium">
-        {product.reviews?.length ?? 0} Reviews
-      </span>
-    </div>
-
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {product.reviews?.map((review, index) => (
-        <ReviewCard key={index} review={review} />
-      ))}
-    </div>
-  </div>
-</section>
-
- </main>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {product.reviews?.map((review, index) => (
+              <ReviewCard key={index} review={review} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
-}
+};
 
 export default DetailView;
-
-
