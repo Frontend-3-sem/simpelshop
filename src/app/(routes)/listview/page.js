@@ -4,21 +4,30 @@ import Search from "../../components/Search";
 import Button from "../../components/Button";
 import { Suspense } from "react";
 
+const categories = [
+  { text: "Furniture", slug: "furniture" },
+  { text: "Home Decoration", slug: "home-decoration" },
+  { text: "Kitchen Accessories", slug: "kitchen-accessories" },
+];
 export default async function Products({ searchParams }) {
   const { category, q } = await searchParams;
+  const current = categories.find((c) => c.slug === category);
+
   return (
     <section className="mx-auto px-8 max-w-6xl selection:bg-accentDark selection:text-background">
-      <h1 className="mt-14 mb-2">{category}</h1>
+      <h1 className="mt-14 mb-2">{current?.text ?? "All products"}</h1>
       <p>10 products</p>
       <div className="flex flex-col sm:flex-row sm:justify-between gap-3 mb-6 mt-4">
         <div className="flex flex-wrap w-full max-w-2xl gap-2">
-          <Filterbutton text="All" active={true} />
-          <Filterbutton text="Beds" active={false} />
-          <Filterbutton text="Sofas" active={false} />
-          <Filterbutton text="Kitchen" active={false} />
-          <Filterbutton text="Bathroom" active={false} />
-          <Filterbutton text="Bedside tables" active={false} />
-          <Filterbutton text="Office chairs" active={false} />
+          <Filterbutton text="All" value="" active={!category} />
+          {categories.map((filter) => (
+            <Filterbutton
+              key={filter.slug}
+              text={filter.text}
+              value={filter.slug}
+              active={category === filter.slug}
+            />
+          ))}
         </div>
         <div>
           <Search />
@@ -35,11 +44,7 @@ export default async function Products({ searchParams }) {
 }
 
 const FetchProduct = async ({ category, q }) => {
-  const url = category
-    ? `https://dummyjson.com/products/category/${category}`
-    : q
-      ? `https://dummyjson.com/products/search?q=${q}`
-      : `https://dummyjson.com/products`;
+  const url = `https://dummyjson.com/products?limit=0`;
 
   console.log("Category:", category);
   console.log("Search:", q);
@@ -47,11 +52,17 @@ const FetchProduct = async ({ category, q }) => {
 
   const response = await fetch(url);
   const { products } = await response.json();
+  const slugs = categories.map((c) => c.slug);
+  const card = products
+    .filter((f) => slugs.includes(f.category))
+    .filter((f) => !category || f.category === category)
+    .filter((f) => !q || f.title.toLowerCase().includes(q.toLowerCase()))
+    .map((f) => <CardComponent key={f.id} product={f} />);
+
+  if (card.length === 0) return <p>No products</p>;
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-      {products.map((product) => (
-        <CardComponent key={product.id} product={product} />
-      ))}
+      {card}
     </div>
   );
 };
