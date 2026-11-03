@@ -1,24 +1,14 @@
 import { notFound } from "next/navigation";
 import { TfiMinus, TfiPlus, TfiHeart } from "react-icons/tfi";
-// import { products } from "@/app/data/productes";
 import Image from "next/image";
 import Rating from "@/app/components/Rating/Rating";
-
-
-
-
-
-
-
-
+import ReviewCard from "@/app/components/Rating/ReviewCard";
 
 const DetailView = async ({ params }) => {
   const { id } = await params;
-
   const response = await fetch(
     `https://dummyjson.com/products/${id}`
   );
-
   if (!response.ok) {
     notFound("Produktet kunne ikke hentes");
   }
@@ -26,12 +16,9 @@ const DetailView = async ({ params }) => {
   const product = await response.json(); 
   return (
 
-
-
-
   
   <main>
-      <section className="grid grid-cols-7 gap-4 p-8">
+      <section className="grid grid-cols-1  md:grid-cols-5 lg:grid-cols-7 gap-4 p-8  ">
         <div className="col-span-6 p-9">
           <h1 className="text-3xl md:text-5xl lg:text-6xl">{product.title}</h1>
         </div>
@@ -57,14 +44,14 @@ const DetailView = async ({ params }) => {
 
       <section className="grid grid-cols-7">
         <div className="relative">
-          <Image src={product.images[1]} width={400} height={400} className=" w-full aspect-square object-cover object-center" alt={product.tags} />
+          <Image src={product.images[1]} width={500} height={500} className=" w-full aspect-square object-cover object-center" alt={product.tags} />
         </div>
         <div className="relative">
-          <Image src={product.images[2]} width={400} height={400} className=" w-full aspect-square object-cover object-center" alt={product.tags} />
+          <Image src={product.images[2]} width={500} height={500} className=" w-full aspect-square object-cover object-center" alt={product.tags} />
         </div>
       </section>
 
-      <article className="grid gap-8 p-90 min-w-sm">
+      <article className="grid gap-8 p-40 min-w-80 ">
         <details open>
           <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
             <h3>Description</h3>
@@ -121,12 +108,32 @@ const DetailView = async ({ params }) => {
       </article>
 
 
-<section> 
-   <h2>Customer Reviews</h2>
 
-      <Rating rating={product.rating} />
+<section className="bg-background px-6 py-20 md:px-16">
+  <div className="mx-auto max-w-7xl">
+    <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-accentLight pb-6">
+      <div>
+        <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accentMedium">
+          Customer experiences
+        </p>
+
+        <h2 className="font-header text-4xl text-text md:text-5xl">
+          What our customers say
+        </h2>
+      </div>
+
+      <span className="text-sm text-accentMedium">
+        {product.reviews?.length ?? 0} Reviews
+      </span>
+    </div>
+
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {product.reviews?.map((review, index) => (
+        <ReviewCard key={index} review={review} />
+      ))}
+    </div>
+  </div>
 </section>
-
 
  </main>
   );
