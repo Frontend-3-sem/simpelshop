@@ -14,7 +14,7 @@ white-space: nowrap;
 }
 
 .emptyStars {
-     color: #ddd8ce; }
+     color: var(--surface); }
 
 .filledStars {
 position: absolute;
@@ -22,5 +22,5 @@ top: 0;
 left: 0;
 overflow: hidden;
 white-space: nowrap;
-color: #af8c55;
+color: var(--accentDark);
 }
