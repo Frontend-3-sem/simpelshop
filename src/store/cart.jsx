@@ -6,7 +6,6 @@ const useStore = create(
     (set, get) => ({
       cart: [],
       toggleCart: (product) => {
-        console.log("Product:", product);
         const currentCart = get().cart;
         const itemExists = currentCart.some((item) => item.id === product.id);
 
@@ -15,7 +14,6 @@ const useStore = create(
             ? currentCart.filter((item) => item.id !== product.id)
             : [...currentCart, product],
         });
-        console.log("Updated favorites:", get().cart);
       },
     }),
     {
