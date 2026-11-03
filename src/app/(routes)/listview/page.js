@@ -5,10 +5,10 @@ import Button from "../../components/Button";
 import { Suspense } from "react";
 
 export default async function Products({ searchParams }) {
-  const { category } = await searchParams;
+  const { category, q } = await searchParams;
   return (
     <section className="mx-auto px-8 max-w-6xl selection:bg-accentDark selection:text-background">
-      <h1 className="mt-14 mb-2">BEDROOM</h1>
+      <h1 className="mt-14 mb-2">{category}</h1>
       <p>10 products</p>
       <div className="flex flex-col sm:flex-row sm:justify-between gap-3 mb-6 mt-4">
         <div className="flex flex-wrap w-full max-w-2xl gap-2">
@@ -24,8 +24,8 @@ export default async function Products({ searchParams }) {
           <Search />
         </div>
       </div>
-      <Suspense key={category} fallback={<div>...Loading</div>}>
-        <FetchProduct category={category} />
+      <Suspense key={`${category}-${q}`} fallback={<div>...Loading</div>}>
+        <FetchProduct category={category} q={q} />
       </Suspense>
       <div className="flex items-center justify-center w-full sm:w-64 mx-auto mt-15 mb-18">
         <Button text="Show more" color="secondary" />
@@ -34,10 +34,16 @@ export default async function Products({ searchParams }) {
   );
 }
 
-const FetchProduct = async ({ category }) => {
+const FetchProduct = async ({ category, q }) => {
   const url = category
     ? `https://dummyjson.com/products/category/${category}`
-    : `https://dummyjson.com/products`;
+    : q
+      ? `https://dummyjson.com/products/search?q=${q}`
+      : `https://dummyjson.com/products`;
+
+  console.log("Category:", category);
+  console.log("Search:", q);
+  console.log("Fetching URL:", url);
 
   const response = await fetch(url);
   const { products } = await response.json();

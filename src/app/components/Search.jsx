@@ -4,10 +4,10 @@ import Form from "next/form";
 const Search = () => {
   return (
     <>
-      <Form action="/search" className="relative w-full sm:w-52 lg:w-64">
+      <Form action="/listview" className="relative w-full sm:w-52 lg:w-64">
         <input
           type="search"
-          name="Search product"
+          name="q"
           placeholder="Search Products"
           className=" focus:outline-none block h-10 w-full pl-4 px-8 border border-accentMedium
           [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-cancel-button]:hidden"
