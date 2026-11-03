@@ -3,8 +3,8 @@ import CardComponent from "../components/Card";
 export default async function Popular({ searchParams }) {
   return (
     <>
-      <section>
-        <h2>Popular products</h2>
+      <section className="my-16">
+        <h2 className="mb-8">Popular products</h2>
         <FetchPopular />
       </section>
     </>
@@ -17,7 +17,7 @@ const FetchPopular = async () => {
   const response = await fetch(url);
   const { products } = await response.json();
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-4 gap-4 md:gap-8">
       {products.map((product) => (
         <CardComponent key={product.id} product={product} />
       ))}
