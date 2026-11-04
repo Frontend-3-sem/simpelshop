@@ -5,14 +5,13 @@ const CartSummary = () => {
   const cart = useStore((state) => state.cart);
   const pluck = (arr, key) => arr.map((i) => i[key]);
   // Price
-  const prices = pluck(cart, "price");
   let priceSum = 0;
-  prices.forEach((price) => {
-    priceSum += price;
+  cart.forEach((item) => {
+    priceSum += item.price * item.quantity;
   });
   //  Discount
-  const discounts = cart.map((product) => {
-    return (product.price * product.discountPercentage) / 100;
+  const discounts = cart.map((item) => {
+    return ((item.price * item.discountPercentage) / 100) * item.quantity;
   });
   let discountSum = 0;
   discounts.forEach((discount) => {

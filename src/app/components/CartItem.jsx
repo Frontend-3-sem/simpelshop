@@ -12,6 +12,9 @@ const CartItem = ({
   product,
 }) => {
   const toggleCart = useStore((state) => state.toggleCart);
+  const removeItem = useStore((state) => state.removeItem);
+  const decrease = useStore((state) => state.decrease);
+  const itemPrice = price * product.quantity;
   return (
     <>
       <div className="grid grid-cols-7 border-b border-accentLight gap-4 py-4 items-center">
@@ -35,23 +38,35 @@ const CartItem = ({
         </div>
         <div className="col-span-2 bg-background px-2 py-1 w-fit">
           <div className="flex h-9 trim gap-4">
-            <button className="text-l self-center align-middle hover:scale-108 cursor-pointer">
+            <button
+              onClick={() => decrease(product.id)}
+              className="text-l self-center align-middle hover:scale-108 cursor-pointer"
+            >
               <TfiMinus />
             </button>
-            <p className="text-xl self-center">1</p>
-            <button className="text-l self-center hover:scale-108 cursor-pointer">
+            <p className="text-xl self-center">{product.quantity}</p>
+            <button
+              onClick={() => toggleCart(product)}
+              className="text-l self-center hover:scale-108 cursor-pointer"
+            >
               <TfiPlus />
             </button>
           </div>
         </div>
         <div>
-          <p className="col-span-1 subtle line-through">$ {price}</p>
+          <p className="col-span-1 subtle line-through">
+            $ {Math.round(itemPrice)}
+          </p>
           <p className="col-span-1">
-            $ {Math.round(price - (price * discountPercentage) / 100)}
+            ${" "}
+            {Math.round(
+              itemPrice -
+                ((price * discountPercentage) / 100) * product.quantity,
+            )}
           </p>
         </div>
         <button
-          onClick={() => toggleCart(product)}
+          onClick={() => removeItem(product.id)}
           className="cursor-pointer col-span-1 mx-4"
         >
           <TfiTrash className="text-2xl justify-self-end hover:scale-108" />

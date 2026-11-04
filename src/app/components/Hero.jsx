@@ -1,6 +1,6 @@
 import Image from "next/image";
 import CategoryBtn from "./CategoryBtn";
-import Button from "./Button";
+import Link from "next/link";
 const Hero = () => {
   return (
     <>
@@ -20,7 +20,12 @@ const Hero = () => {
               <span className="py-1">For the</span>
               <span className="py-1">Modern person</span>
             </h1>
-            <Button text="Shop all products" />
+            <Link
+              className="py-2 px-10 bg-accentDark hover:bg-accentMedium text-background font-bold w-full h-8"
+              href={`/listview`}
+            >
+              Shop all products
+            </Link>
           </div>
         </div>
         <div className="grid grid-cols-4 gap-4 md:gap-8">
