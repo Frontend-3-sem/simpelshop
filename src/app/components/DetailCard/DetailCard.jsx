@@ -39,7 +39,7 @@ const DetailCard = ({ product }) => {
           </div>
         </div>
 
-        <article className="grid gap-8 p-40 min-w-80 ">
+   <article className="grid gap-8 px-40 pt-40 pb-8 min-w-80">
           <details>
             <summary className="flex cursor-pointer list-none items-center justify-between border-b border-accentLight p-1 [&::-webkit-details-marker]:hidden">
               <h3>Description</h3>
