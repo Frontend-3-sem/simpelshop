@@ -1,4 +1,4 @@
-import styles from "./rating.module.css";
+ import styles from "./rating.module.css";
 
 
 export default function Rating({ rating = 0 }) {
