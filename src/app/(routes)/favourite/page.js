@@ -1,4 +1,4 @@
-import FavouriteList from "@/app/components/FavouriteList";
+import FavouriteList from "@/app/components/Favorites/FavouriteList";
 
 export default async function Page() {
   const res = await fetch("https://dummyjson.com/products?limit=0");

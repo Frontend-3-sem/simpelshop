@@ -5,7 +5,6 @@ const Thumbnail = ({ imgsrc, index, setActiveProduct, isActive }) => {
   return (
     <button
       type="button"
-
       onClick={() => setActiveProduct(index)}
       aria-label={`Show product image ${index + 1}`}
       aria-pressed={isActive}

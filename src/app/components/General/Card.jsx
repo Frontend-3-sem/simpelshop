@@ -1,18 +1,17 @@
 "use client";
-import useStore from "@/store/cart";
 import Image from "next/image";
 import Tags from "./Tags";
-import Favourite from "./FavouriteBtn";
+import Favourite from "../Favorites/FavouriteBtn";
 import Link from "next/link";
+import CartBtn from "../Cart/CartBtn";
 
 const CardComponent = ({ product }) => {
-  const toggleCart = useStore((state) => state.toggleCart);
   const discountedPrice = Math.round(
     product.price - (product.price * product.discountPercentage) / 100,
   );
   const save = Math.round(product.price - discountedPrice);
   return (
-    <div className="grid row-span-2 grid-rows-subgrid">
+    <div className="grid row-span-2 grid-rows-subgrid gap-y-0">
       <div className="relative flex items-center justify-center bg-surface min-h-80">
         <Link href={`/detailview/${product.id}`}>
           <Image
@@ -32,25 +31,23 @@ const CardComponent = ({ product }) => {
           <Favourite productId={product.id} />
         </div>
         <div className="absolute inset-x-5 bottom-5 flex justify-center">
-          <button
-            type="button"
-            onClick={() => toggleCart(product)}
-            className="font-bold cursor-pointer w-full h-8 bg-accentDark hover:bg-accentMedium text-background"
-          >
-            Add to cart
-          </button>
+          <CartBtn product={product} />
         </div>
       </div>
-      <div className="mt-2 flex flex-col">
-        <Link href={`/detailview/${product.id}`} className="block grow">
-          <span className="text-base font-header color-text pt-1.5">
+      <div className="mt-2 flex flex-col justify-end">
+        <Link href={`/detailview/${product.id}`} className="grow">
+          <span className="block text-base font-header color-text pt-1.5 leading-tight">
             {product.title}
           </span>
         </Link>
-        <p className="whitespace-pre-line font-bold">${discountedPrice}</p>
+        <p className="font-bold mb-0">${discountedPrice}</p>
         <div className="flex justify-between">
-          <p className="line-through font-light opacity-60">${product.price}</p>
-          <p className="font-light opacity-60">Save ${save}</p>
+          <p className="line-through font-light opacity-60 [text-box:trim-both_cap_alphabetic]">
+            ${product.price}
+          </p>
+          <p className="font-light opacity-60 mb-0 [text-box:trim-both_cap_alphabetic]">
+            Save ${save}
+          </p>
         </div>
       </div>
     </div>

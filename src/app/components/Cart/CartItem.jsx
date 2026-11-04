@@ -6,7 +6,7 @@ import { TfiTrash, TfiPlus, TfiMinus } from "react-icons/tfi";
 const CartItem = ({
   src,
   title,
-  category,
+  brand,
   price,
   discountPercentage,
   product,
@@ -30,11 +30,11 @@ const CartItem = ({
         </Link>
         <div className="col-span-2">
           <Link href={`/detailview/${product.id}`}>
-            <h4 className="text-pretty hover:underline hover:decoration-1">
+            <h4 className="text-pretty hover:underline hover:decoration-1 leading-6 mb-1">
               {title}
             </h4>
           </Link>
-          <p>{category}</p>
+          <p>{brand}</p>
         </div>
         <div className="col-span-2 bg-background px-2 py-1 w-fit">
           <div className="flex h-9 trim gap-4">

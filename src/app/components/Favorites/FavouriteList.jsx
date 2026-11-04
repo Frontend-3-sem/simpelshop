@@ -1,6 +1,6 @@
 "use client";
 import useStore from "@/store/favourite";
-import CardComponent from "@/app/components/Card";
+import CardComponent from "../General/Card";
 
 export default function FavouritesClient({ products }) {
   const favourites = useStore((state) => state.favourites);

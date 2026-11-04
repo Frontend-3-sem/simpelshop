@@ -13,7 +13,7 @@ const CartList = () => {
             key={product.id}
             src={product.images[0]}
             title={product.title}
-            category={product.category}
+            brand={product.brand}
             price={product.price}
             discountPercentage={product.discountPercentage}
             product={product}
