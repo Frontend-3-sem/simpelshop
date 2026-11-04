@@ -12,7 +12,7 @@ const CardComponent = ({ product }) => {
   );
   const save = Math.round(product.price - discountedPrice);
   return (
-    <div>
+    <div className="grid row-span-2 grid-rows-subgrid">
       <div className="relative flex items-center justify-center bg-surface min-h-80">
         <Link href={`/detailview/${product.id}`}>
           <Image
@@ -41,8 +41,8 @@ const CardComponent = ({ product }) => {
           </button>
         </div>
       </div>
-      <div className="mt-2">
-        <Link href={`/detailview/${product.id}`}>
+      <div className="mt-2 flex flex-col">
+        <Link href={`/detailview/${product.id}`} className="block grow">
           <span className="text-base font-header color-text pt-1.5">
             {product.title}
           </span>
