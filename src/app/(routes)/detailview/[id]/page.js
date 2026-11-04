@@ -31,7 +31,10 @@ const DetailView = async ({ params }) => {
             <div className="text-right">
               <p className="text-accentLight">Vejledende udsalgspris</p>
               <p className="text-3xl">{product.price} $</p>
-              <p className="text-accentLight"> - {product.discountPercentage}%</p>
+              <p className="text-accentLight">
+                {" "}
+                - {product.discountPercentage}%
+              </p>
             </div>
             <div className="absolute inset-x-5 bottom-5 flex justify-center">
               <Button text="ADD TO CART" color="primary" />
@@ -43,8 +46,6 @@ const DetailView = async ({ params }) => {
           </div>
         </div>
       </section>
-
-      
 
       <article className="grid gap-8 p-40 min-w-80 ">
         <details open>
@@ -119,12 +120,18 @@ const DetailView = async ({ params }) => {
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-accentLight pb-6">
             <div>
-              <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accentMedium">Customer experiences</p>
+              <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accentMedium">
+                Customer experiences
+              </p>
 
-              <h2 className="font-header text-4xl text-text md:text-5xl">What our customers say</h2>
+              <h2 className="font-header text-4xl text-text md:text-5xl">
+                What our customers say
+              </h2>
             </div>
 
-            <span className="text-sm text-accentMedium">{product.reviews?.length ?? 0} Reviews</span>
+            <span className="text-sm text-accentMedium">
+              {product.reviews?.length ?? 0} Reviews
+            </span>
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
