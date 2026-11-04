@@ -1,7 +1,7 @@
 import { TfiShield } from "react-icons/tfi";
-import CartList from "@/app/components/CartList";
-import Button from "@/app/components/Button";
-import CartSummary from "@/app/components/CartSummary";
+import CartList from "@/app/components/Cart/CartList";
+import Button from "@/app/components/General/Button";
+import CartSummary from "@/app/components/Cart/CartSummary";
 export default async function Checkout() {
   return (
     <>

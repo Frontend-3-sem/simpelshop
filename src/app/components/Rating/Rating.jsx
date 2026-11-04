@@ -1,5 +1,4 @@
- import styles from "./rating.module.css";
-
+import styles from "./rating.module.css";
 
 export default function Rating({ rating = 0 }) {
   return (
@@ -10,10 +9,7 @@ export default function Rating({ rating = 0 }) {
     >
       <div className="flex text-2xl" aria-hidden="true">
         {[1, 2, 3, 4, 5].map((star) => {
-          const fill = Math.min(
-            100,
-            Math.max(0, (rating - (star - 1)) * 100)
-          );
+          const fill = Math.min(100, Math.max(0, (rating - (star - 1)) * 100));
 
           return (
             <span
@@ -33,9 +29,7 @@ export default function Rating({ rating = 0 }) {
         })}
       </div>
 
-      <span className="text-sm text-text">
-        {rating.toFixed(2)} / 5
-      </span>
+      <span className="text-sm text-text">{rating.toFixed(2)} / 5</span>
     </div>
   );
 }

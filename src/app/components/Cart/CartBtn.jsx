@@ -6,7 +6,7 @@ const CartBtn = ({ className, product }) => {
     <button
       type="button"
       onClick={() => toggleCart(product)}
-      className={`font-bold cursor-pointer w-full h-8 bg-accentDark hover:bg-accentMedium text-background ${className}`}
+      className={`font-bold cursor-pointer w-full h-8 bg-accentDark hover:bg-accentMedium text-background active:scale-98 ${className}`}
     >
       Add to cart
     </button>

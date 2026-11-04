@@ -1,9 +1,9 @@
-import CardComponent from "../../components/Card";
-import Filterbutton from "../../components/FilterButton";
-import Search from "../../components/Search";
-import Button from "../../components/Button";
+import CardComponent from "@/app/components/General/Card";
+import Filterbutton from "@/app/components/Listview/FilterButton";
+import Search from "@/app/components/Listview/Search";
+import Button from "@/app/components/General/Button";
 import { Suspense } from "react";
-import SkeletonCard from "@/app/components/SkeletonCard";
+import SkeletonCard from "@/app/components/Listview/SkeletonCard";
 
 const categories = [
   { text: "Furniture", slug: "furniture" },

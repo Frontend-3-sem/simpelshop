@@ -1,4 +1,4 @@
-import CardComponent from "../components/Card";
+import CardComponent from "../General/Card";
 
 export default async function Popular({ searchParams }) {
   return (

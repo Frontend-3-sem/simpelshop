@@ -4,7 +4,6 @@ import CartPopoverItem from "./CartPopoverItem";
 import Link from "next/link";
 const CartPopover = () => {
   const cart = useStore((state) => state.cart);
-  console.log(cart);
   if (cart.length === 0)
     return (
       <>

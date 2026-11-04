@@ -1,7 +1,7 @@
-import Hero from "./components/Hero";
-import About from "./components/About";
-import News from "./components/News";
-import Popular from "./components/Popular";
+import Hero from "./components/Frontpage/Hero";
+import About from "./components/Frontpage/About";
+import News from "./components/Frontpage/News";
+import Popular from "./components/Frontpage/Popular";
 import "./globals.css";
 const Frontpage = () => {
   return (

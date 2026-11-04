@@ -1,19 +1,18 @@
 "use client";
 import { notFound } from "next/navigation";
 import { TfiMinus, TfiPlus } from "react-icons/tfi";
-import ProductGallery from "@/app/components/DetailCard/ProductGallery";
-
-import useStore from "@/store/cart";
-import Favourite from "../FavouriteBtn";
+import ProductGallery from "./ProductGallery";
+import CartBtn from "../Cart/CartBtn";
+import Favourite from "../Favorites/FavouriteBtn";
 
 const DetailCard = ({ product }) => {
-  const toggleCart = useStore((state) => state.toggleCart);
-
   return (
     <>
       <section>
         <div className="flex items-start justify-between gap-4 p-9">
-          <h1 className="  text-3xl md:text-5xl lg:text-6xl">{product.title}</h1>
+          <h1 className="  text-3xl md:text-5xl lg:text-6xl">
+            {product.title}
+          </h1>
 
           <Favourite className="h-9  shrink-0" productId={product.id} />
         </div>
@@ -21,16 +20,26 @@ const DetailCard = ({ product }) => {
         <div className="relative col-span-7 h-100 ">
           <article className="absolute bottom-0 h-[45%] w-full  bg-accentMedium p-6">
             <div className="px-1 text-right">
-              <p className="text-3xl"> ${Math.round(product.price - (product.price * product.discountPercentage) / 100)} </p>
+              <p className="text-3xl">
+                {" "}
+                $
+                {Math.round(
+                  product.price -
+                    (product.price * product.discountPercentage) / 100,
+                )}{" "}
+              </p>
               <div className="flex gap-2">
-                <p className="text-background flex-1"> - {product.discountPercentage}%</p>
-                <p className="line-through font-light opacity-60 text-background ">{product.price} $</p>{" "}
+                <p className="text-background flex-1">
+                  {" "}
+                  - {product.discountPercentage}%
+                </p>
+                <p className="line-through font-light opacity-60 text-background ">
+                  {product.price} $
+                </p>{" "}
               </div>{" "}
             </div>
-            <div className="absolute inset-x-5 bottom-5 flex justify-end">
-              <button onClick={() => toggleCart(product)} className="font-bold cursor-pointer w-80 h-8 bg-accentDark text-background hover:bg-surface hover:text-text ">
-                Add to cart
-              </button>
+            <div className="absolute inset-x-5 bottom-5 flex justify-end z-100">
+              <CartBtn product={product} />
             </div>
           </article>
 
@@ -39,7 +48,7 @@ const DetailCard = ({ product }) => {
           </div>
         </div>
 
-   <article className="grid gap-8 px-40 pt-40 pb-8 min-w-80">
+        <article className="grid gap-8 px-40 pt-40 pb-8 min-w-80">
           <details>
             <summary className="flex cursor-pointer list-none items-center justify-between border-b border-accentLight p-1 [&::-webkit-details-marker]:hidden">
               <h3>Description</h3>

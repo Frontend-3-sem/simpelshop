@@ -1,8 +1,8 @@
 import Logo from "./Logo";
 import Link from "next/link";
-import CartPopover from "./CartPopover";
+import CartPopover from "../Cart/CartPopover";
+import PopoverBtn from "../Cart/PopoverBtn";
 import { IoMdHeart } from "react-icons/io";
-import { TfiShoppingCart } from "react-icons/tfi";
 const Header = () => {
   return (
     <>
@@ -26,9 +26,7 @@ const Header = () => {
             <Link href={`/favourite`}>
               <IoMdHeart className="h-5 w-auto cursor-pointer fill-text hover:scale-108" />
             </Link>
-            <button popoverTarget="cartPopover">
-              <TfiShoppingCart className="h-5 w-auto cursor-pointer fill-text hover:scale-108" />
-            </button>
+            <PopoverBtn />
           </div>
         </div>
       </div>
