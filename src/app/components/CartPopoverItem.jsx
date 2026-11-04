@@ -11,6 +11,9 @@ const CartPopoverItem = ({
   product,
 }) => {
   const toggleCart = useStore((state) => state.toggleCart);
+  const removeItem = useStore((state) => state.removeItem);
+  const decrease = useStore((state) => state.decrease);
+  const itemPrice = price * product.quantity;
   return (
     <>
       <div className="grid grid-cols-4 border border-accentLight gap-4 items-center h-33.75 pl-4 pr-2">
@@ -31,26 +34,38 @@ const CartPopoverItem = ({
             </h4>
           </Link>
           <div className="flex gap-4">
-            <p>$ {Math.round(price - (price * discountPercentage) / 100)}</p>
+            <p>
+              ${" "}
+              {Math.round(
+                itemPrice -
+                  ((price * discountPercentage) / 100) * product.quantity,
+              )}
+            </p>
             <p className="line-through font-light opacity-60">
-              $ {Math.round(price)}
+              $ {Math.round(itemPrice)}
             </p>
           </div>
         </div>
         <div className="bg-background py-2 w-fit h-32.5 stackcontainer place-items-center">
           <button
-            onClick={() => toggleCart(product)}
+            onClick={() => removeItem(product.id)}
             className="cursor-pointer self-start justify-self-end stackitem"
           >
             <TfiTrash className=" hover:scale-108" />
           </button>
 
           <div className="flex h-fit trim gap-4 border border-accentLight px-2 place-self-center stackitem mr-4">
-            <button className="text-m self-center align-middle hover:scale-108 cursor-pointer">
+            <button
+              onClick={() => decrease(product.id)}
+              className="text-m self-center align-middle hover:scale-108 cursor-pointer"
+            >
               <TfiMinus />
             </button>
-            <p className="text-l self-center">1</p>
-            <button className="text-m self-center hover:scale-108 cursor-pointer">
+            <p className="text-l self-center">{product.quantity}</p>
+            <button
+              onClick={() => toggleCart(product)}
+              className="text-m self-center hover:scale-108 cursor-pointer"
+            >
               <TfiPlus />
             </button>
           </div>
