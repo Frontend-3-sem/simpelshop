@@ -1,33 +1,34 @@
 import { notFound } from "next/navigation";
-import { TfiMinus, TfiPlus, TfiHeart } from "react-icons/tfi";
-import Image from "next/image";
-import Rating from "@/app/components/Rating/Rating";
+import { TfiMinus, TfiPlus } from "react-icons/tfi";
 import ReviewCard from "@/app/components/Rating/ReviewCard";
-import Button from "@/app/components/Button";
-import Thumbnail from "@/app/components/Thumbnail";
+import useStore from "@/store/cart";
 import ProductGallery from "@/app/components/ProductGallery";
+import FavouriteBtn from "@/app/components/FavouriteBtn";
+import Tags from "@/app/components/Tags";
+ const { toggleCart } = useStore();
 
 const DetailView = async ({ params }) => {
   const { id } = await params;
   const response = await fetch(`https://dummyjson.com/products/${id}`);
   if (!response.ok) {
-    notFound("Produktet kunne ikke hentes");
+    notFound("The product could not be retrieved");
   }
 
   const product = await response.json();
+
   return (
     <main>
-      <section className="grid grid-cols-1  md:grid-cols-5 lg:grid-cols-7 gap-4 p-8  ">
+      <section className="grid grid-cols-1  md:grid-cols-5 lg:grid-cols-7 gap-4 px-5  max-w-500   ">
         <div className="col-span-6 p-9">
           <h1 className="text-3xl md:text-5xl lg:text-6xl">{product.title}</h1>
         </div>
 
-        <div className="col-span-1 flex justify-end p-4">
-          <TfiHeart className="text-3xl" />
+        <div className="col-span-1 flex justify-end p-4 ">
+          <FavouriteBtn className="text-5xl" />
         </div>
 
-        <div className="relative col-span-7 h-150">
-          <article className="absolute bottom-0 h-[45%] w-full bg-accentMedium p-6">
+        <div className="relative col-span-7 h-100 ">
+          <article className="absolute bottom-0 h-[45%] w-full  bg-accentMedium p-6">
             <div className="text-right">
               <p className="text-accentLight">Vejledende udsalgspris</p>
               <p className="text-3xl">{product.price} $</p>
@@ -36,8 +37,14 @@ const DetailView = async ({ params }) => {
                 - {product.discountPercentage}%
               </p>
             </div>
-            <div className="absolute inset-x-5 bottom-5 flex justify-center">
-              <Button text="ADD TO CART" color="primary" />
+
+            <div className="absolute inset-x-5 bottom-5 flex justify-end">
+              <button
+                 onClick={() => toggleCart(product)}
+                className="font-bold cursor-pointer w-80 h-8 bg-accentDark hover:bg-accentMedium text-background"
+              >
+                ADD TO CART
+              </button>
             </div>
           </article>
 
@@ -48,8 +55,8 @@ const DetailView = async ({ params }) => {
       </section>
 
       <article className="grid gap-8 p-40 min-w-80 ">
-        <details open>
-          <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
+        <details>
+          <summary className="flex cursor-pointer list-none items-center justify-between border-b border-accentLight p-1 [&::-webkit-details-marker]:hidden">
             <h3>Description</h3>
             <span className="text-2xl group-open:hidden">
               <TfiPlus />{" "}
@@ -64,8 +71,8 @@ const DetailView = async ({ params }) => {
           </div>
         </details>
 
-        <details open>
-          <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
+        <details>
+          <summary className="flex cursor-pointer list-none items-center justify-between border-b border-accentLight p-1 [&::-webkit-details-marker]:hidden">
             <h3>Specifications</h3>
             <span className="text-2xl group-open:hidden">
               <TfiPlus />{" "}
@@ -93,8 +100,8 @@ const DetailView = async ({ params }) => {
           </div>
         </details>
 
-        <details open>
-          <summary className="flex cursor-pointer list-none items-center justify-between border-b border-stone-400 p-1 [&::-webkit-details-marker]:hidden">
+        <details>
+          <summary className="flex cursor-pointer list-none items-center justify-between border-b border-accentLight p-1 [&::-webkit-details-marker]:hidden">
             <h3>Info</h3>
             <span className="text-2xl group-open:hidden">
               <TfiPlus />{" "}
@@ -104,14 +111,17 @@ const DetailView = async ({ params }) => {
             </span>
           </summary>
           <div className="grid grid-cols-2">
+            <p>Availability Status:</p>
+            <p className="text-right">{product.availabilityStatus}</p>
+
             <p>Return policy:</p>
             <p className="text-right">{product.returnPolicy}</p>
 
-            <p>Availability Status;</p>
-            <p className="text-right">{product.availabilityStatus}</p>
+            <p>Warranty information:</p>
+            <p className="text-right">{product.warrantyInformation}</p>
 
             <p>Shipping information:</p>
-            <p className="text-right">{product.weight} pound</p>
+            <p className="text-right">{product.shippingInformation}</p>
           </div>
         </details>
       </article>

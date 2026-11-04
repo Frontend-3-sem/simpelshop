@@ -10,7 +10,7 @@ export default function ProductGallery({ images, title }) {
   return (
     
       <div className="relative h-full w-full">
-        <Image src={images[activeProduct]} alt={title} fill sizes="(max-width: 768px) 100vw, 55vw" loading="eager"
+        <Image src={images[activeProduct]} alt={title} fill sizes="(max-width: 900px) 100vw, 55vw" loading="eager"
  className="object-contain" />
       
 
