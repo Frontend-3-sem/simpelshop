@@ -26,7 +26,7 @@ const CardComponent = ({ product }) => {
           ></Image>
         </Link>
         <div className="absolute top-4 left-4 w-full">
-          <Tags />
+          <Tags stock={product.stock} />
         </div>
         <div className="absolute top-4 right-4">
           <Favourite productId={product.id} />
@@ -37,7 +37,7 @@ const CardComponent = ({ product }) => {
             onClick={() => toggleCart(product)}
             className="font-bold cursor-pointer w-full h-8 bg-accentDark hover:bg-accentMedium text-background"
           >
-            ADD TO CART
+            Add to cart
           </button>
         </div>
       </div>
