@@ -1,26 +1,40 @@
-.rating {  
-    display: flex;
+.rating {
+  display: flex;
   align-items: center;
   gap: 0.75rem;
- }
+}
 
 .stars {
-  position: relative;
- display: inline-block;
+  display: grid;
+  width: max-content;
   font-size: 1.5rem;
- line-height: 1;
-  letter-spacing: 0.1rem;
-white-space: nowrap;
+  line-height: 1;
+  letter-spacing: 0;
+
+  
+  background: linear-gradient(
+    to right,
+    var(--accentDark) var(--rating-percent),
+    var(--accentLight) var(--rating-percent)
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+}
+
+.emptyStars,
+.filledStars {
+  grid-area: 1 / 1;
+  white-space: nowrap;
 }
 
 .emptyStars {
-     color: var(--surface); }
+  color: var(--surface);
+}
 
 .filledStars {
-position: absolute;
-top: 0;
-left: 0;
-overflow: hidden;
-white-space: nowrap;
-color: var(--accentDark);
+  color: var(--accentDark);
+  overflow: hidden;
 }
