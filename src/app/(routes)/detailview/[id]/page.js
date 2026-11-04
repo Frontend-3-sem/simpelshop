@@ -4,7 +4,7 @@ import ReviewCard from "@/app/components/Rating/ReviewCard";
 import useStore from "@/store/cart";
 import ProductGallery from "@/app/components/ProductGallery";
 import FavouriteBtn from "@/app/components/FavouriteBtn";
-import Tags from "@/app/components/Tags";
+
  const { toggleCart } = useStore();
 
 const DetailView = async ({ params }) => {
@@ -18,7 +18,7 @@ const DetailView = async ({ params }) => {
 
   return (
     <main>
-      <section className="grid grid-cols-1  md:grid-cols-5 lg:grid-cols-7 gap-4 px-5  max-w-500   ">
+           <section className="grid grid-cols-1  md:grid-cols-5 lg:grid-cols-7 gap-4 px-5  max-w-500   ">
         <div className="col-span-6 p-9">
           <h1 className="text-3xl md:text-5xl lg:text-6xl">{product.title}</h1>
         </div>
@@ -29,15 +29,14 @@ const DetailView = async ({ params }) => {
 
         <div className="relative col-span-7 h-100 ">
           <article className="absolute bottom-0 h-[45%] w-full  bg-accentMedium p-6">
-            <div className="text-right">
-              <p className="text-accentLight">Vejledende udsalgspris</p>
-              <p className="text-3xl">{product.price} $</p>
-              <p className="text-accentLight">
-                {" "}
-                - {product.discountPercentage}%
-              </p>
-            </div>
-
+          
+              <div className="px-1">
+                <p className="text-3xl"> ${Math.round(product.price - (product.price * product.discountPercentage) / 100)} </p>
+                <div className="flex gap-2">
+                  <p className="text-background flex-1"> - {product.discountPercentage}%</p>
+                  <p className="line-through font-light opacity-60 text-background flex-1">{product.price} $</p>{" "}
+                </div>{" "}
+              </div>
             <div className="absolute inset-x-5 bottom-5 flex justify-end">
               <button
                  onClick={() => toggleCart(product)}
