@@ -4,11 +4,9 @@ const colors = {
     "bg-accentLight hover:bg-accentDark hover:text-background text-text",
 };
 
-const Button = ({ text, className, color = "primary" }) => {
+const Button = ({ text, className = "cursor-pointer", color = "primary" }) => {
   return (
-    <button
-      className={`font-bold cursor-pointer w-full h-8 ${className} ${colors[color]}`}
-    >
+    <button className={`font-bold w-full h-8  ${colors[color]} ${className}`}>
       {text}
     </button>
   );
