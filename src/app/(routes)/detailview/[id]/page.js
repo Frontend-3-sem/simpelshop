@@ -4,6 +4,8 @@ import Image from "next/image";
 import Rating from "@/app/components/Rating/Rating";
 import ReviewCard from "@/app/components/Rating/ReviewCard";
 import Button from "@/app/components/Button";
+import Thumbnail from "@/app/components/Thumbnail";
+import ProductGallery from "@/app/components/ProductGallery";
 
 const DetailView = async ({ params }) => {
   const { id } = await params;
@@ -37,19 +39,12 @@ const DetailView = async ({ params }) => {
           </article>
 
           <div className="absolute left-[10%] top-0 z-10 h-full w-[55%]">
-            <Image src={product.images[0]} fill sizes="(max-width: 768px) 100vw, 55vw" className=" object-contain" loading="eager" alt={`${product.title} - additional product view`} />
+            <ProductGallery images={product.images} title={product.title} />
           </div>
         </div>
       </section>
 
-      <section className="grid grid-cols-3">
-        <div className="relative">
-          <Image src={product.images[1]} width={500} height={500} className=" w-full aspect-square object-cover object-center" alt={`${product.title} - additional product view`} />
-        </div>
-        <div className="relative">
-          <Image src={product.images[2]} width={500} height={500} className=" w-full aspect-square object-cover object-center" alt={`${product.title} - additional product view`} />
-        </div>
-      </section>
+      
 
       <article className="grid gap-8 p-40 min-w-80 ">
         <details open>
