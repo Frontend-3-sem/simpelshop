@@ -19,7 +19,7 @@ const DetailView = async ({ params }) => {
         <DetailCard product={product} />
 </div>
 
-      <article className="bg-background px-6 py-20 md:px-16">
+    <article className="bg-background px-6 pt-8 pb-20 md:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-accentLight pb-6">
             <div>
