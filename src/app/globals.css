@@ -67,6 +67,12 @@
       grid-area: stack;
     }
   }
+
+  .popover {
+    position-area: bottom;
+    top: 2.2rem;
+    right: 0.5rem;
+  }
 }
 
 body {

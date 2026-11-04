@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${pontanoSans.variable} ${abrilFat.variable} ${gelasio.variable} h-full antialiased`}
     >
-      <body className="min-h-1vh min-h-full">
+      <body className="min-h-1vh min-h-full selection:bg-accentDark selection:text-background">
         <Header />
         <main className="mx-4.5">{children}</main>
         <Footer />

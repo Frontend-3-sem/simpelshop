@@ -30,13 +30,12 @@ const DetailView = async ({ params }) => {
         <div className="relative col-span-7 h-100 ">
           <article className="absolute bottom-0 h-[45%] w-full  bg-accentMedium p-6">
             <div className="text-right">
-              <div className="px-1">
-                <p className="text-3xl"> ${Math.round(product.price - (product.price * product.discountPercentage) / 100)} </p>
-                <div className="flex gap-2">
-                  <p className="text-background flex-1"> - {product.discountPercentage}%</p>
-                  <p className="line-through font-light opacity-60 text-background flex-1">{product.price} $</p>{" "}
-                </div>{" "}
-              </div>
+              <p className="text-accentLight">Vejledende udsalgspris</p>
+              <p className="text-3xl">{product.price} $</p>
+              <p className="text-accentLight">
+                {" "}
+                - {product.discountPercentage}%
+              </p>
             </div>
 
             <div className="absolute inset-x-5 bottom-5 flex justify-end">
@@ -131,12 +130,18 @@ const DetailView = async ({ params }) => {
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-accentLight pb-6">
             <div>
-              <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accentMedium">Customer experiences</p>
+              <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accentMedium">
+                Customer experiences
+              </p>
 
-              <h2 className="font-header text-4xl text-text md:text-5xl">What our customers say</h2>
+              <h2 className="font-header text-4xl text-text md:text-5xl">
+                What our customers say
+              </h2>
             </div>
 
-            <span className="text-sm text-accentMedium">{product.reviews?.length ?? 0} Reviews</span>
+            <span className="text-sm text-accentMedium">
+              {product.reviews?.length ?? 0} Reviews
+            </span>
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">

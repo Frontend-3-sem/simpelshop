@@ -1,5 +1,6 @@
 import Logo from "./Logo";
 import Link from "next/link";
+import CartPopover from "./CartPopover";
 import { IoMdHeart } from "react-icons/io";
 import { TfiShoppingCart } from "react-icons/tfi";
 const Header = () => {
@@ -22,13 +23,16 @@ const Header = () => {
             </Link>
           </nav>
           <div className="flex gap-8 items-center pl-8">
-            <IoMdHeart className="h-5 w-auto cursor-pointer fill-text hover:scale-108" />
-            <Link href={`/checkout`}>
-              <TfiShoppingCart className="h-5 w-auto cursor-pointer fill-text hover:scale-108" />
+            <Link href={`/favourite`}>
+              <IoMdHeart className="h-5 w-auto cursor-pointer fill-text hover:scale-108" />
             </Link>
+            <button popoverTarget="cartPopover">
+              <TfiShoppingCart className="h-5 w-auto cursor-pointer fill-text hover:scale-108" />
+            </button>
           </div>
         </div>
       </div>
+      <CartPopover />
     </>
   );
 };

@@ -1,21 +1,27 @@
 "use client";
-import { useState } from "react";
+import useStore from "@/store/favourite";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 
-const Favourite = ({ favouriteId = null }) => {
-  const [favourite, setFavourite] = useState(favouriteId !== null);
+const Favourite = ({ productId, className }) => {
+  const favourites = useStore((state) => state.favourites);
+  const toggleFavourite = useStore((state) => state.toggleFavourite);
+
+  const isFavourite = favourites.includes(productId);
 
   return (
     <button
-      onClick={() => setFavourite((favourite) => !favourite)}
       type="button"
-      aria-label={favourite ? "Add favourite" : "Remove favourite"}
-      aria-pressed={favourite}
+      onClick={() => toggleFavourite(productId)}
+      aria-label={isFavourite ? "Remove from favourites" : "Add to favourites"}
     >
-      {favourite ? (
-        <IoMdHeart className="h-6 w-auto cursor-pointer" />
+      {isFavourite ? (
+        <IoMdHeart
+          className={`h-6 w-auto cursor-pointer hover:scale-108 ${className}`}
+        />
       ) : (
-        <IoMdHeartEmpty className="h-6 w-auto cursor-pointer" />
+        <IoMdHeartEmpty
+          className={`h-6 w-auto cursor-pointer hover:scale-108 ${className}`}
+        />
       )}
     </button>
   );
